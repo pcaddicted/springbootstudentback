@@ -1,6 +1,6 @@
 spring:
     datasource:
-        url: jdbc:mysql://localhost:3306/springjpastudent?useSSL=false
+        url: jdbc:mysql://localhost:3306/springjpastudent?useSSL=false&serverTimezone=UTC
         username: root
         password: "woshiwenbo"
         driverClassName: com.mysql.cj.jdbc.Driver

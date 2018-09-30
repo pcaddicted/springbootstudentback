@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student getStudentById(Long id) {
-        return null;
+        return studentReposutory.getOne(id);
     }
 
     @Override

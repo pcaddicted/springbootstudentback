@@ -1,10 +1,12 @@
 package com.wenbo.springbootstudent.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 public class Student implements Serializable {
 
     /**
@@ -30,6 +32,15 @@ public class Student implements Serializable {
 
     @Column(name="course_id")
     private Integer course_id;//学生所选的所有课程
+
+    @Column(name="hometown")
+    private String hometown;//学生家乡
+
+    @Column(name="number")
+    private String number;//学生学号
+
+    @Column(name="telephone")
+    private String telephone;//学生手机号
 
     protected Student() {//按照JPA规范定义的一个protected的构造函数,防止被外部使用
     }
@@ -82,16 +93,47 @@ public class Student implements Serializable {
         this.course_id = course_id;
     }
 
+
+    public String getHometown() {
+        return hometown;
+    }
+
+    public void setHometown(String hometown) {
+        this.hometown = hometown;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
     /**
      * 重写tostring的原因其实就是数据的传输,所以也必须实现序列化接口serialize接口
      * 自从jquery1.9后,json的格式必须满足的是:[{"key":"value"},{"key":"value"}]的格式,除了Boolean型不需要外,其余都是需要的
      */
+
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return "{\"id\":"+"\""+getId()+"\""+","+"\""+name+"\":"+"\""+"getName()"+"\","+"\""+sex+"\":"+"\""+"getSex()"+"\","+"\""+age+"\":"+"\""+getAge()+"\"";
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                ", age=" + age +
+                ", course_id=" + course_id +
+                ", hometown='" + hometown + '\'' +
+                ", number='" + number + '\'' +
+                ", telephone='" + telephone + '\'' +
+                '}';
     }
-
-
-
 }
